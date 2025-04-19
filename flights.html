@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flights - TravelEase</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="logo">
+            <h1>TravelEase</h1>
+        </div>
+        <div class="nav-links">
+            <a href="index.html">Home</a>
+            <a href="flights.html" class="active">Flights</a>
+            <a href="hotels.html">Hotels</a>
+            <a href="tours.html">Tours</a>
+            <a href="contact.html">Contact</a>
+            <a href="ratings.html">Reviews</a>
+            <div class="dropdown">
+                <a href="#" class="dropdown-toggle">More <i class="fas fa-chevron-down"></i></a>
+                <div class="dropdown-menu">
+                    <a href="about.html">About Us</a>
+                    <a href="privacy.html">Privacy Policy</a>
+                    <a href="terms.html">Terms & Conditions</a>
+                </div>
+            </div>
+            <a href="#" class="btn login-btn">Login</a>
+        </div>
+        <div class="mobile-menu-toggle">
+            <i class="fas fa-bars"></i>
+        </div>
+    </nav>
+
+    <!-- Flights Hero Section -->
+    <section class="hero" style="background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://images.unsplash.com/photo-1436491865332-7a61a109cc05?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80');">
+        <div class="hero-content">
+            <h1>Find Your Perfect Flight</h1>
+            <p>Search and book flights to destinations worldwide</p>
+            <div class="search-container">
+                <div class="search-inputs">
+                    <div class="input-group">
+                        <i class="fas fa-plane-departure"></i>
+                        <input type="text" placeholder="From">
+                    </div>
+                    <div class="input-group">
+                        <i class="fas fa-plane-arrival"></i>
+                        <input type="text" placeholder="To">
+                    </div>
+                    <div class="input-group">
+                        <i class="fas fa-calendar"></i>
+                        <input type="date" placeholder="Departure Date">
+                    </div>
+                    <div class="input-group">
+                        <i class="fas fa-calendar"></i>
+                        <input type="date" placeholder="Return Date">
+                    </div>
+                    <div class="input-group">
+                        <i class="fas fa-users"></i>
+                        <input type="number" placeholder="Passengers" min="1">
+                    </div>
+                </div>
+                <div class="advanced-filters">
+                    <div class="filter-group">
+                        <label>Class</label>
+                        <select>
+                            <option>Economy</option>
+                            <option>Business</option>
+                            <option>First Class</option>
+                        </select>
+                    </div>
+                    <div class="filter-group">
+                        <label>Airlines</label>
+                        <select>
+                            <option>All Airlines</option>
+                            <option>Emirates</option>
+                            <option>Qatar Airways</option>
+                            <option>Lufthansa</option>
+                        </select>
+                    </div>
+                </div>
+                <button class="search-btn">
+                    <i class="fas fa-search"></i>
+                    Search Flights
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Popular Flights Section -->
+    <section id="flights" class="flights-section">
+        <h2>Popular Flights</h2>
+        <div class="flights-grid" id="flightsGrid">
+            <!-- Flights will be dynamically loaded here -->
+        </div>
+    </section>
+
+    <!-- Special Offers -->
+    <section class="deals-section">
+        <h2>Special Flight Offers</h2>
+        <div class="deals-grid">
+            <!-- Special offers will be dynamically loaded here -->
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>About Us</h3>
+                <p>TravelEase is your trusted partner in creating unforgettable travel experiences.</p>
+            </div>
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <a href="about.html">About</a>
+                <a href="flights.html">Flights</a>
+                <a href="hotels.html">Hotels</a>
+                <a href="tours.html">Tours</a>
+                <a href="contact.html">Contact</a>
+                <a href="ratings.html">Reviews</a>
+                <a href="privacy.html">Privacy Policy</a>
+                <a href="terms.html">Terms & Conditions</a>
+            </div>
+            <div class="footer-section">
+                <h3>Contact Info</h3>
+                <p>Email: info@travelease.com</p>
+                <p>Phone: +1 234 567 890</p>
+                <p>Address: 123 Travel Street, City, Country</p>
+            </div>
+            <div class="footer-section">
+                <h3>Follow Us</h3>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-facebook"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-linkedin"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 TravelEase. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+</body>
+</html> 

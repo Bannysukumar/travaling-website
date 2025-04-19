@@ -1,0 +1,53 @@
+{
+    "nav.home": "Home",
+    "nav.flights": "Flights",
+    "nav.hotels": "Hotels",
+    "nav.tours": "Tours",
+    "nav.contact": "Contact",
+    "nav.login": "Login",
+    "nav.signup": "Sign Up",
+    "nav.logout": "Logout",
+    
+    "hero.title": "Discover Your Next Adventure",
+    "hero.subtitle": "Book flights, hotels, and tours with ease",
+    "hero.search": "Search destinations...",
+    
+    "flights.title": "Popular Flights",
+    "flights.from": "From",
+    "flights.to": "To",
+    "flights.price": "Price",
+    "flights.book": "Book Now",
+    
+    "hotels.title": "Featured Hotels",
+    "hotels.location": "Location",
+    "hotels.rating": "Rating",
+    "hotels.price": "Price per night",
+    "hotels.book": "Book Now",
+    
+    "tours.title": "Popular Tours",
+    "tours.duration": "Duration",
+    "tours.price": "Price",
+    "tours.book": "Book Now",
+    
+    "contact.title": "Contact Us",
+    "contact.name": "Name",
+    "contact.email": "Email",
+    "contact.message": "Message",
+    "contact.send": "Send Message",
+    
+    "footer.about": "About Us",
+    "footer.contact": "Contact",
+    "footer.terms": "Terms & Conditions",
+    "footer.privacy": "Privacy Policy",
+    
+    "chat.title": "Live Support",
+    "chat.placeholder": "Type your message...",
+    "chat.send": "Send",
+    
+    "booking.title": "Booking Confirmation",
+    "booking.details": "Booking Details",
+    "booking.invoice": "Download Invoice",
+    "booking.status": "Status",
+    "booking.date": "Date",
+    "booking.amount": "Amount"
+} 

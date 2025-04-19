@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tours - TravelEase</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="logo">
+            <h1>TravelEase</h1>
+        </div>
+        <div class="nav-links">
+            <a href="index.html">Home</a>
+            <a href="flights.html">Flights</a>
+            <a href="hotels.html">Hotels</a>
+            <a href="tours.html" class="active">Tours</a>
+            <a href="contact.html">Contact</a>
+            <a href="ratings.html">Reviews</a>
+            <div class="dropdown">
+                <a href="#" class="dropdown-toggle">More <i class="fas fa-chevron-down"></i></a>
+                <div class="dropdown-menu">
+                    <a href="about.html">About Us</a>
+                    <a href="privacy.html">Privacy Policy</a>
+                    <a href="terms.html">Terms & Conditions</a>
+                </div>
+            </div>
+            <a href="#" class="btn login-btn">Login</a>
+        </div>
+        <div class="mobile-menu-toggle">
+            <i class="fas fa-bars"></i>
+        </div>
+    </nav>
+
+    <!-- Tours Hero Section -->
+    <section class="hero" style="background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80');">
+        <div class="hero-content">
+            <h1>Discover Amazing Tours</h1>
+            <p>Explore the world with our guided tours and adventures</p>
+            <div class="search-container">
+                <div class="search-inputs">
+                    <div class="input-group">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <input type="text" placeholder="Destination">
+                    </div>
+                    <div class="input-group">
+                        <i class="fas fa-calendar"></i>
+                        <input type="date" placeholder="Start Date">
+                    </div>
+                    <div class="input-group">
+                        <i class="fas fa-users"></i>
+                        <input type="number" placeholder="Number of People" min="1">
+                    </div>
+                </div>
+                <div class="advanced-filters">
+                    <div class="filter-group">
+                        <label>Tour Type</label>
+                        <select>
+                            <option>All Types</option>
+                            <option>Adventure</option>
+                            <option>Cultural</option>
+                            <option>Beach</option>
+                            <option>City Break</option>
+                        </select>
+                    </div>
+                    <div class="filter-group">
+                        <label>Duration</label>
+                        <select>
+                            <option>Any Duration</option>
+                            <option>1-3 Days</option>
+                            <option>4-7 Days</option>
+                            <option>8-14 Days</option>
+                            <option>15+ Days</option>
+                        </select>
+                    </div>
+                    <div class="filter-group">
+                        <label>Price Range</label>
+                        <div class="price-range">
+                            <input type="range" min="0" max="5000" step="100">
+                            <div class="price-display">
+                                <span>$0</span>
+                                <span id="price-value">$2500</span>
+                                <span>$5000+</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <button class="search-btn">
+                    <i class="fas fa-search"></i>
+                    Search Tours
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Tours Section -->
+    <section class="tours-section">
+        <h2>Featured Tours</h2>
+        <div class="tours-grid">
+            <!-- Tours will be dynamically loaded here -->
+        </div>
+    </section>
+
+    <!-- Popular Categories -->
+    <section class="categories-section">
+        <h2>Tour Categories</h2>
+        <div class="categories-grid">
+            <div class="category-card">
+                <img src="https://images.unsplash.com/photo-1527004013197-933c4bb611b3?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Adventure Tours">
+                <div class="category-content">
+                    <h3>Adventure Tours</h3>
+                    <p>Thrilling experiences for adventure seekers</p>
+                </div>
+            </div>
+            <div class="category-card">
+                <img src="https://images.unsplash.com/photo-1523906834658-6e24ef2386f9?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Cultural Tours">
+                <div class="category-content">
+                    <h3>Cultural Tours</h3>
+                    <p>Immerse yourself in local traditions</p>
+                </div>
+            </div>
+            <div class="category-card">
+                <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Beach Tours">
+                <div class="category-content">
+                    <h3>Beach Tours</h3>
+                    <p>Relax on the world's best beaches</p>
+                </div>
+            </div>
+            <div class="category-card">
+                <img src="https://images.unsplash.com/photo-1480714378408-67cf0d13bc1b?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="City Tours">
+                <div class="category-content">
+                    <h3>City Tours</h3>
+                    <p>Explore vibrant urban destinations</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Special Offers -->
+    <section class="deals-section">
+        <h2>Special Tour Packages</h2>
+        <div class="deals-grid">
+            <!-- Special offers will be dynamically loaded here -->
+        </div>
+    </section>
+
+    <!-- Why Choose Us -->
+    <section class="features-section">
+        <h2>Why Choose Our Tours</h2>
+        <div class="features-grid">
+            <div class="feature-card">
+                <i class="fas fa-user-check"></i>
+                <h3>Expert Guides</h3>
+                <p>Professional and knowledgeable local guides</p>
+            </div>
+            <div class="feature-card">
+                <i class="fas fa-shield-alt"></i>
+                <h3>Safe Travel</h3>
+                <p>Your safety is our top priority</p>
+            </div>
+            <div class="feature-card">
+                <i class="fas fa-hand-holding-usd"></i>
+                <h3>Best Value</h3>
+                <p>Competitive prices and great deals</p>
+            </div>
+            <div class="feature-card">
+                <i class="fas fa-clock"></i>
+                <h3>24/7 Support</h3>
+                <p>Round-the-clock customer assistance</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>About Us</h3>
+                <p>TravelEase is your trusted partner in creating unforgettable travel experiences.</p>
+            </div>
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <a href="about.html">About</a>
+                <a href="flights.html">Flights</a>
+                <a href="hotels.html">Hotels</a>
+                <a href="tours.html">Tours</a>
+                <a href="contact.html">Contact</a>
+                <a href="ratings.html">Reviews</a>
+                <a href="privacy.html">Privacy Policy</a>
+                <a href="terms.html">Terms & Conditions</a>
+            </div>
+            <div class="footer-section">
+                <h3>Contact Info</h3>
+                <p>Email: info@travelease.com</p>
+                <p>Phone: +1 234 567 890</p>
+                <p>Address: 123 Travel Street, City, Country</p>
+            </div>
+            <div class="footer-section">
+                <h3>Follow Us</h3>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-facebook"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-linkedin"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 TravelEase. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+</body>
+</html> 

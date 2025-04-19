@@ -1,0 +1,642 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TravelEase - Your Travel Companion</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <!-- PWA Support -->
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#2c3e50">
+    <link rel="apple-touch-icon" href="icons/icon-192x192.png">
+    <!-- Firebase SDK -->
+    <script type="module" src="js/config.js"></script>
+    <!-- Payment SDKs -->
+    <script src="https://js.stripe.com/v3/"></script>
+    <script src="https://cdn.jsdelivr.net/npm/web3@1.5.2/dist/web3.min.js"></script>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="logo">
+            <h1>TravelEase</h1>
+        </div>
+        <div class="nav-links">
+            <a href="index.html" class="active">Home</a>
+            <a href="flights.html">Flights</a>
+            <a href="hotels.html">Hotels</a>
+            <a href="tours.html">Tours</a>
+            <a href="contact.html">Contact</a>
+            <a href="ratings.html">Reviews</a>
+            <div class="dropdown">
+                <a href="#" class="dropdown-toggle">More <i class="fas fa-chevron-down"></i></a>
+                <div class="dropdown-menu">
+                    <a href="about.html">About Us</a>
+                    <a href="privacy.html">Privacy Policy</a>
+                    <a href="terms.html">Terms & Conditions</a>
+                </div>
+            </div>
+            <a href="#" class="btn login-btn">Login</a>
+            <div class="user-menu" style="display: none;">
+                <a href="#" class="dropdown-toggle">
+                    <i class="fas fa-user-circle"></i>
+                    <span class="user-email"></span>
+                </a>
+                <div class="dropdown-menu">
+                    <a href="profile.html">Profile</a>
+                    <a href="bookings.html">My Bookings</a>
+                    <a href="#" class="logout-btn">Logout</a>
+                </div>
+            </div>
+        </div>
+        <div class="mobile-menu-toggle">
+            <i class="fas fa-bars"></i>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h1>Explore the World</h1>
+            <p>Book your next adventure with us</p>
+            <div class="search-container">
+                <div class="search-tabs">
+                    <button class="tab-btn active" data-type="flights">Flights</button>
+                    <button class="tab-btn" data-type="hotels">Hotels</button>
+                    <button class="tab-btn" data-type="tours">Tours</button>
+                </div>
+                
+                <div class="search-inputs">
+                    <div class="input-group">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <input type="text" id="destination" placeholder="Where do you want to go?">
+                    </div>
+                    
+                    <div class="input-group">
+                        <i class="fas fa-calendar"></i>
+                        <input type="date" id="check-in" placeholder="Check-in Date">
+                    </div>
+                    
+                    <div class="input-group">
+                        <i class="fas fa-calendar"></i>
+                        <input type="date" id="check-out" placeholder="Check-out Date">
+                    </div>
+                    
+                    <div class="input-group">
+                        <i class="fas fa-users"></i>
+                        <input type="number" id="guests" placeholder="Number of Guests" min="1">
+                    </div>
+                </div>
+
+                <div class="advanced-filters">
+                    <div class="filter-group">
+                        <label>Budget Range</label>
+                        <div class="price-range">
+                            <input type="range" id="price-range" min="0" max="1000" step="100">
+                            <div class="price-display">
+                                <span>$0</span>
+                                <span id="price-value">$500</span>
+                                <span>$1000</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="filter-group">
+                        <label>Type</label>
+                        <select id="type-filter">
+                            <option value="all">All Types</option>
+                            <option value="economy">Economy</option>
+                            <option value="business">Business</option>
+                            <option value="luxury">Luxury</option>
+                        </select>
+                    </div>
+
+                    <div class="filter-group">
+                        <label>Rating</label>
+                        <div class="rating-filter">
+                            <input type="checkbox" id="rating-5" value="5">
+                            <label for="rating-5">5 Stars</label>
+                            <input type="checkbox" id="rating-4" value="4">
+                            <label for="rating-4">4+ Stars</label>
+                            <input type="checkbox" id="rating-3" value="3">
+                            <label for="rating-3">3+ Stars</label>
+                        </div>
+                    </div>
+                </div>
+
+                <button class="search-btn">
+                    <i class="fas fa-search"></i>
+                    Search
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Destinations -->
+    <section id="destinations" class="destinations-section">
+        <h2>Featured Destinations</h2>
+        <div class="destinations-grid" id="destinationsGrid">
+            <!-- Destinations will be dynamically loaded here -->
+        </div>
+    </section>
+
+    <!-- Trending Deals -->
+    <section id="deals" class="deals-section">
+        <h2>Trending Deals</h2>
+        <div class="deals-grid" id="dealsGrid">
+            <!-- Deals will be dynamically loaded here -->
+        </div>
+    </section>
+
+    <!-- Search Results Section -->
+    <div class="search-results-section">
+        <div class="results-header">
+            <h2>Available Options</h2>
+            <div class="results-count">
+                <span id="results-count">0</span> results found
+            </div>
+        </div>
+
+        <div class="results-filters">
+            <div class="filter-group">
+                <label>Sort By</label>
+                <select id="sort-by">
+                    <option value="price-asc">Price: Low to High</option>
+                    <option value="price-desc">Price: High to Low</option>
+                    <option value="rating">Best Rated</option>
+                    <option value="popular">Most Popular</option>
+                </select>
+            </div>
+
+            <div class="filter-group">
+                <label>Price Range</label>
+                <div class="price-filter">
+                    <input type="number" id="min-price" placeholder="Min">
+                    <span>to</span>
+                    <input type="number" id="max-price" placeholder="Max">
+                </div>
+            </div>
+        </div>
+
+        <div class="results-grid">
+            <!-- Results will be dynamically populated here -->
+        </div>
+
+        <div class="pagination">
+            <button class="page-btn" disabled>Previous</button>
+            <div class="page-numbers">
+                <span class="active">1</span>
+                <span>2</span>
+                <span>3</span>
+                <span>...</span>
+                <span>10</span>
+            </div>
+            <button class="page-btn">Next</button>
+        </div>
+    </div>
+
+    <!-- Booking Modal -->
+    <div class="modal" id="booking-modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Complete Your Booking</h2>
+            
+            <div class="booking-summary">
+                <h3>Booking Summary</h3>
+                <div class="summary-details">
+                    <div class="detail-item">
+                        <span>Destination:</span>
+                        <span id="booking-destination"></span>
+                    </div>
+                    <div class="detail-item">
+                        <span>Check-in:</span>
+                        <span id="booking-check-in"></span>
+                    </div>
+                    <div class="detail-item">
+                        <span>Check-out:</span>
+                        <span id="booking-check-out"></span>
+                    </div>
+                    <div class="detail-item">
+                        <span>Guests:</span>
+                        <span id="booking-guests"></span>
+                    </div>
+                    <div class="detail-item total">
+                        <span>Total Price:</span>
+                        <span id="booking-total"></span>
+                    </div>
+                </div>
+            </div>
+
+            <form id="booking-form">
+                <div class="form-group">
+                    <label>Full Name</label>
+                    <input type="text" required>
+                </div>
+                
+                <div class="form-group">
+                    <label>Email</label>
+                    <input type="email" required>
+                </div>
+                
+                <div class="form-group">
+                    <label>Phone</label>
+                    <input type="tel" required>
+                </div>
+                
+                <div class="form-group">
+                    <label>Special Requests</label>
+                    <textarea rows="3"></textarea>
+                </div>
+
+                <div class="payment-section">
+                    <h3>Payment Method</h3>
+                    <div class="payment-methods">
+                        <button type="button" class="payment-method-btn active" data-method="upi">
+                            <i class="fas fa-mobile-alt"></i>
+                            UPI
+                        </button>
+                        <button type="button" class="payment-method-btn" data-method="card">
+                            <i class="fas fa-credit-card"></i>
+                            Card
+                        </button>
+                        <button type="button" class="payment-method-btn" data-method="crypto">
+                            <i class="fab fa-bitcoin"></i>
+                            Crypto
+                        </button>
+                    </div>
+
+                    <div class="payment-form" id="upi-form">
+                        <div class="form-group">
+                            <label>UPI ID</label>
+                            <input type="text" placeholder="username@upi">
+                        </div>
+                    </div>
+
+                    <div class="payment-form" id="card-form" style="display: none;">
+                        <div class="form-group">
+                            <label>Card Number</label>
+                            <input type="text" placeholder="1234 5678 9012 3456">
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label>Expiry</label>
+                                <input type="text" placeholder="MM/YY">
+                            </div>
+                            <div class="form-group">
+                                <label>CVV</label>
+                                <input type="text" placeholder="123">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="payment-form" id="crypto-form" style="display: none;">
+                        <div class="crypto-address">
+                            <p>Send payment to this address:</p>
+                            <code id="crypto-address"></code>
+                        </div>
+                    </div>
+                </div>
+
+                <button type="submit" class="btn">Confirm Booking</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Flights Section -->
+    <section id="flights" class="flights-section">
+        <h2>Popular Flights</h2>
+        <div class="flights-grid" id="flightsGrid">
+            <!-- Flights will be dynamically loaded here -->
+        </div>
+    </section>
+
+    <!-- Hotels Section -->
+    <section id="hotels" class="hotels-section">
+        <h2>Featured Hotels</h2>
+        <div class="hotels-grid" id="hotelsGrid">
+            <!-- Hotels will be dynamically loaded here -->
+        </div>
+    </section>
+
+    <!-- Tours Section -->
+    <section id="tours" class="tours-section">
+        <h2>Popular Tours</h2>
+        <div class="tours-grid" id="toursGrid">
+            <!-- Tours will be dynamically loaded here -->
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact-section">
+        <h2>Contact Us</h2>
+        <div class="contact-form">
+            <form id="contactForm">
+                <input type="text" placeholder="Name" required>
+                <input type="email" placeholder="Email" required>
+                <textarea placeholder="Message" required></textarea>
+                <button type="submit" class="btn">Send Message</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Reviews Section -->
+    <section id="reviews" class="reviews-section">
+        <h2>Top Rated Destinations</h2>
+        <div class="reviews-grid" id="reviewsGrid">
+            <!-- Reviews will be dynamically loaded here -->
+        </div>
+    </section>
+
+    <!-- Payment Modal -->
+    <div id="paymentModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Payment Details</h2>
+            <div class="payment-methods">
+                <button class="payment-method-btn active" data-method="upi">
+                    <i class="fas fa-mobile-alt"></i> UPI
+                </button>
+                <button class="payment-method-btn" data-method="crypto">
+                    <i class="fab fa-bitcoin"></i> Crypto
+                </button>
+            </div>
+            <div id="upiPaymentForm" class="payment-form">
+                <div class="form-group">
+                    <label>UPI ID</label>
+                    <input type="text" id="upiId" placeholder="username@upi">
+                </div>
+                <div class="form-group">
+                    <label>Amount</label>
+                    <input type="number" id="upiAmount" readonly>
+                </div>
+                <button class="btn" onclick="processUPIPayment()">Pay Now</button>
+            </div>
+            <div id="cryptoPaymentForm" class="payment-form" style="display: none;">
+                <div class="form-group">
+                    <label>Select Cryptocurrency</label>
+                    <select id="cryptoType">
+                        <option value="btc">Bitcoin (BTC)</option>
+                        <option value="eth">Ethereum (ETH)</option>
+                        <option value="usdt">Tether (USDT)</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Amount</label>
+                    <input type="number" id="cryptoAmount" readonly>
+                </div>
+                <div class="crypto-address">
+                    <p>Send payment to:</p>
+                    <code id="cryptoAddress"></code>
+                </div>
+                <button class="btn" onclick="processCryptoPayment()">Pay Now</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Invoice Modal -->
+    <div id="invoiceModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Booking Confirmation</h2>
+            <div class="invoice-content">
+                <div class="invoice-header">
+                    <h3>TravelEase</h3>
+                    <p>Invoice #<span id="invoiceNumber"></span></p>
+                </div>
+                <div class="invoice-details">
+                    <div class="booking-info">
+                        <h4>Booking Details</h4>
+                        <div id="bookingInfo"></div>
+                    </div>
+                    <div class="payment-info">
+                        <h4>Payment Details</h4>
+                        <div id="paymentInfo"></div>
+                    </div>
+                </div>
+                <div class="invoice-total">
+                    <h4>Total Amount</h4>
+                    <p id="totalAmount"></p>
+                </div>
+                <button class="btn" onclick="downloadInvoice()">Download Invoice</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>About Us</h3>
+                <p>TravelEase is your trusted partner in creating unforgettable travel experiences.</p>
+            </div>
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <a href="about.html">About</a>
+                <a href="flights.html">Flights</a>
+                <a href="hotels.html">Hotels</a>
+                <a href="tours.html">Tours</a>
+                <a href="contact.html">Contact</a>
+                <a href="ratings.html">Reviews</a>
+                <a href="privacy.html">Privacy Policy</a>
+                <a href="terms.html">Terms & Conditions</a>
+            </div>
+            <div class="footer-section">
+                <h3>Contact Info</h3>
+                <p>Email: info@travelease.com</p>
+                <p>Phone: +1 234 567 890</p>
+                <p>Address: 123 Travel Street, City, Country</p>
+            </div>
+            <div class="footer-section">
+                <h3>Follow Us</h3>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-facebook"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-linkedin"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 TravelEase. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Login Modal -->
+    <div id="loginModal" class="modal">
+        <div class="modal-content auth-modal">
+            <span class="close">&times;</span>
+            <div class="auth-container">
+                <div class="auth-header">
+                    <h2>Welcome Back</h2>
+                    <p>Login to your account</p>
+                </div>
+                <div class="social-login">
+                    <button class="social-btn google">
+                        <i class="fab fa-google"></i>
+                        Continue with Google
+                    </button>
+                    <button class="social-btn facebook">
+                        <i class="fab fa-facebook-f"></i>
+                        Continue with Facebook
+                    </button>
+                </div>
+                <div class="divider">
+                    <span>or</span>
+                </div>
+                <form id="loginForm" class="auth-form">
+                    <div class="form-group">
+                        <label>Email</label>
+                        <div class="input-group">
+                            <i class="fas fa-envelope"></i>
+                            <input type="email" placeholder="Enter your email" required>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>Password</label>
+                        <div class="input-group">
+                            <i class="fas fa-lock"></i>
+                            <input type="password" placeholder="Enter your password" required>
+                            <i class="fas fa-eye-slash toggle-password"></i>
+                        </div>
+                    </div>
+                    <div class="form-options">
+                        <label class="remember-me">
+                            <input type="checkbox">
+                            <span>Remember me</span>
+                        </label>
+                        <a href="#" class="forgot-password">Forgot Password?</a>
+                    </div>
+                    <button type="submit" class="btn btn-primary">
+                        <i class="fas fa-sign-in-alt"></i>
+                        Login
+                    </button>
+                </form>
+                <div class="auth-footer">
+                    <p>Don't have an account? <a href="#" id="switchToSignup">Sign up</a></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Signup Modal -->
+    <div id="signupModal" class="modal">
+        <div class="modal-content auth-modal">
+            <span class="close">&times;</span>
+            <div class="auth-container">
+                <div class="auth-header">
+                    <h2>Create Account</h2>
+                    <p>Join our travel community</p>
+                </div>
+                <div class="social-login">
+                    <button class="social-btn google">
+                        <i class="fab fa-google"></i>
+                        Continue with Google
+                    </button>
+                    <button class="social-btn facebook">
+                        <i class="fab fa-facebook-f"></i>
+                        Continue with Facebook
+                    </button>
+                </div>
+                <div class="divider">
+                    <span>or</span>
+                </div>
+                <form id="signupForm" class="auth-form">
+                    <div class="form-group">
+                        <label>Full Name</label>
+                        <div class="input-group">
+                            <i class="fas fa-user"></i>
+                            <input type="text" placeholder="Enter your full name" required>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>Email</label>
+                        <div class="input-group">
+                            <i class="fas fa-envelope"></i>
+                            <input type="email" placeholder="Enter your email" required>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>Password</label>
+                        <div class="input-group">
+                            <i class="fas fa-lock"></i>
+                            <input type="password" placeholder="Create a password" required>
+                            <i class="fas fa-eye-slash toggle-password"></i>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>Confirm Password</label>
+                        <div class="input-group">
+                            <i class="fas fa-lock"></i>
+                            <input type="password" placeholder="Confirm your password" required>
+                            <i class="fas fa-eye-slash toggle-password"></i>
+                        </div>
+                    </div>
+                    <div class="form-options">
+                        <label class="terms">
+                            <input type="checkbox" required>
+                            <span>I agree to the <a href="#">Terms of Service</a> and <a href="#">Privacy Policy</a></span>
+                        </label>
+                    </div>
+                    <button type="submit" class="btn btn-primary">
+                        <i class="fas fa-user-plus"></i>
+                        Create Account
+                    </button>
+                </form>
+                <div class="auth-footer">
+                    <p>Already have an account? <a href="#" id="switchToLogin">Login</a></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Chat Widget -->
+    <div id="chatWidget" class="chat-widget">
+        <button id="chatToggle" class="chat-toggle">
+            <i class="fas fa-comments"></i>
+            <span class="chat-badge">0</span>
+        </button>
+        <div id="chatContainer" class="chat-container">
+            <div class="chat-header">
+                <h3>Live Support</h3>
+                <button class="close-chat">&times;</button>
+            </div>
+            <div id="chatMessages" class="chat-messages"></div>
+            <div class="chat-input">
+                <input type="text" id="chatInput" placeholder="Type your message...">
+                <button id="sendMessage">Send</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Location Search -->
+    <div class="location-search">
+        <div class="search-container">
+            <input type="text" id="locationSearch" placeholder="Search for a location...">
+            <button id="searchLocation">Search</button>
+        </div>
+        <div id="map" class="map-container"></div>
+        <div id="searchResults" class="search-results"></div>
+    </div>
+
+    <script src="js/auth.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/chat.js"></script>
+    <script src="js/maps.js"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_GOOGLE_MAPS_API_KEY&libraries=places&loading=async"></script>
+    <script>
+        // Register Service Worker
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('/sw.js')
+                    .then(registration => {
+                        console.log('ServiceWorker registration successful');
+                    })
+                    .catch(err => {
+                        console.log('ServiceWorker registration failed: ', err);
+                    });
+            });
+        }
+    </script>
+</body>
+</html> 

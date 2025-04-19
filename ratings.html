@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Customer Reviews - Travel Website</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="logo">
+            <h1>TravelEase</h1>
+        </div>
+        <div class="nav-links">
+            <a href="index.html">Home</a>
+            <a href="about.html">About</a>
+            <a href="flights.html">Flights</a>
+            <a href="hotels.html">Hotels</a>
+            <a href="tours.html">Tours</a>
+            <a href="contact.html">Contact</a>
+            <a href="#" class="btn">Login</a>
+        </div>
+    </nav>
+
+    <!-- Ratings Hero -->
+    <section class="ratings-hero">
+        <div class="hero-content">
+            <h1>Customer Reviews</h1>
+            <p>See what our travelers have to say about their experiences</p>
+        </div>
+    </section>
+
+    <!-- Overall Rating -->
+    <section class="overall-rating">
+        <div class="container">
+            <div class="rating-summary">
+                <div class="rating-score">
+                    <h2>4.8</h2>
+                    <div class="stars">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star-half-alt"></i>
+                    </div>
+                    <p>Based on 1,234 reviews</p>
+                </div>
+                <div class="rating-bars">
+                    <div class="rating-bar">
+                        <span>5 stars</span>
+                        <div class="bar">
+                            <div class="fill" style="width: 85%"></div>
+                        </div>
+                        <span>85%</span>
+                    </div>
+                    <div class="rating-bar">
+                        <span>4 stars</span>
+                        <div class="bar">
+                            <div class="fill" style="width: 10%"></div>
+                        </div>
+                        <span>10%</span>
+                    </div>
+                    <div class="rating-bar">
+                        <span>3 stars</span>
+                        <div class="bar">
+                            <div class="fill" style="width: 3%"></div>
+                        </div>
+                        <span>3%</span>
+                    </div>
+                    <div class="rating-bar">
+                        <span>2 stars</span>
+                        <div class="bar">
+                            <div class="fill" style="width: 1%"></div>
+                        </div>
+                        <span>1%</span>
+                    </div>
+                    <div class="rating-bar">
+                        <span>1 star</span>
+                        <div class="bar">
+                            <div class="fill" style="width: 1%"></div>
+                        </div>
+                        <span>1%</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Reviews Grid -->
+    <section class="reviews-section">
+        <div class="container">
+            <div class="reviews-filters">
+                <div class="filter-group">
+                    <label>Sort by:</label>
+                    <select>
+                        <option value="newest">Newest First</option>
+                        <option value="highest">Highest Rated</option>
+                        <option value="lowest">Lowest Rated</option>
+                    </select>
+                </div>
+                <div class="filter-group">
+                    <label>Filter by:</label>
+                    <select>
+                        <option value="all">All Reviews</option>
+                        <option value="flights">Flights</option>
+                        <option value="hotels">Hotels</option>
+                        <option value="tours">Tours</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="reviews-grid">
+                <!-- Review Card 1 -->
+                <div class="review-card">
+                    <div class="review-header">
+                        <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="User" class="review-avatar">
+                        <div class="review-info">
+                            <h3>John Smith</h3>
+                            <div class="review-rating">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="review-content">
+                        <p>"Amazing experience with TravelEase! The booking process was smooth, and the customer service was exceptional. I highly recommend their services."</p>
+                        <div class="review-meta">
+                            <span><i class="fas fa-calendar"></i> March 10, 2024</span>
+                            <span><i class="fas fa-plane"></i> Flight Booking</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Review Card 2 -->
+                <div class="review-card">
+                    <div class="review-header">
+                        <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="User" class="review-avatar">
+                        <div class="review-info">
+                            <h3>Sarah Johnson</h3>
+                            <div class="review-rating">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="review-content">
+                        <p>"The hotel booking was perfect! The staff was very helpful in finding the best deals. Will definitely use TravelEase again for my next trip."</p>
+                        <div class="review-meta">
+                            <span><i class="fas fa-calendar"></i> March 8, 2024</span>
+                            <span><i class="fas fa-hotel"></i> Hotel Booking</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Review Card 3 -->
+                <div class="review-card">
+                    <div class="review-header">
+                        <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="User" class="review-avatar">
+                        <div class="review-info">
+                            <h3>Mike Wilson</h3>
+                            <div class="review-rating">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star-half-alt"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="review-content">
+                        <p>"Great tour package! The itinerary was well-planned, and the local guides were knowledgeable. A few minor issues, but overall a good experience."</p>
+                        <div class="review-meta">
+                            <span><i class="fas fa-calendar"></i> March 5, 2024</span>
+                            <span><i class="fas fa-map-marked-alt"></i> Tour Package</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Review Card 4 -->
+                <div class="review-card">
+                    <div class="review-header">
+                        <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="User" class="review-avatar">
+                        <div class="review-info">
+                            <h3>Emma Davis</h3>
+                            <div class="review-rating">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="review-content">
+                        <p>"Exceptional service! The flight booking was seamless, and the prices were competitive. The customer support team was very responsive."</p>
+                        <div class="review-meta">
+                            <span><i class="fas fa-calendar"></i> March 3, 2024</span>
+                            <span><i class="fas fa-plane"></i> Flight Booking</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Pagination -->
+            <div class="pagination">
+                <button class="page-btn" disabled><i class="fas fa-chevron-left"></i></button>
+                <div class="page-numbers">
+                    <span class="active">1</span>
+                    <span>2</span>
+                    <span>3</span>
+                    <span>4</span>
+                    <span>5</span>
+                </div>
+                <button class="page-btn"><i class="fas fa-chevron-right"></i></button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>About Us</h3>
+                <p>TravelEase is your trusted partner in creating unforgettable travel experiences.</p>
+            </div>
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <a href="about.html">About</a>
+                <a href="privacy.html">Privacy Policy</a>
+                <a href="terms.html">Terms & Conditions</a>
+                <a href="contact.html">Contact</a>
+            </div>
+            <div class="footer-section">
+                <h3>Contact Info</h3>
+                <p>Email: info@travelease.com</p>
+                <p>Phone: +1 234 567 890</p>
+                <p>Address: 123 Travel Street, City, Country</p>
+            </div>
+            <div class="footer-section">
+                <h3>Follow Us</h3>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-facebook"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-linkedin"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 TravelEase. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+</body>
+</html> 

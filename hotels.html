@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hotels - TravelEase</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="logo">
+            <h1>TravelEase</h1>
+        </div>
+        <div class="nav-links">
+            <a href="index.html">Home</a>
+            <a href="flights.html">Flights</a>
+            <a href="hotels.html" class="active">Hotels</a>
+            <a href="tours.html">Tours</a>
+            <a href="contact.html">Contact</a>
+            <a href="ratings.html">Reviews</a>
+            <div class="dropdown">
+                <a href="#" class="dropdown-toggle">More <i class="fas fa-chevron-down"></i></a>
+                <div class="dropdown-menu">
+                    <a href="about.html">About Us</a>
+                    <a href="privacy.html">Privacy Policy</a>
+                    <a href="terms.html">Terms & Conditions</a>
+                </div>
+            </div>
+            <a href="#" class="btn login-btn">Login</a>
+        </div>
+        <div class="mobile-menu-toggle">
+            <i class="fas fa-bars"></i>
+        </div>
+    </nav>
+
+    <!-- Hotels Hero Section -->
+    <section class="hero" style="background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80');">
+        <div class="hero-content">
+            <h1>Find Your Perfect Stay</h1>
+            <p>Discover and book amazing hotels worldwide</p>
+            <div class="search-container">
+                <div class="search-inputs">
+                    <div class="input-group">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <input type="text" placeholder="Destination">
+                    </div>
+                    <div class="input-group">
+                        <i class="fas fa-calendar"></i>
+                        <input type="date" placeholder="Check-in">
+                    </div>
+                    <div class="input-group">
+                        <i class="fas fa-calendar"></i>
+                        <input type="date" placeholder="Check-out">
+                    </div>
+                    <div class="input-group">
+                        <i class="fas fa-users"></i>
+                        <input type="number" placeholder="Guests" min="1">
+                    </div>
+                    <div class="input-group">
+                        <i class="fas fa-bed"></i>
+                        <input type="number" placeholder="Rooms" min="1">
+                    </div>
+                </div>
+                <div class="advanced-filters">
+                    <div class="filter-group">
+                        <label>Property Type</label>
+                        <select>
+                            <option>All Types</option>
+                            <option>Hotels</option>
+                            <option>Resorts</option>
+                            <option>Apartments</option>
+                            <option>Villas</option>
+                        </select>
+                    </div>
+                    <div class="filter-group">
+                        <label>Star Rating</label>
+                        <select>
+                            <option>Any Rating</option>
+                            <option>5 Stars</option>
+                            <option>4 Stars</option>
+                            <option>3 Stars</option>
+                        </select>
+                    </div>
+                    <div class="filter-group">
+                        <label>Price Range</label>
+                        <div class="price-range">
+                            <input type="range" min="0" max="1000" step="50">
+                            <div class="price-display">
+                                <span>$0</span>
+                                <span id="price-value">$500</span>
+                                <span>$1000+</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <button class="search-btn">
+                    <i class="fas fa-search"></i>
+                    Search Hotels
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Hotels Section -->
+    <section id="hotels" class="hotels-section">
+        <h2>Featured Hotels</h2>
+        <div class="hotels-grid" id="hotelsGrid">
+            <!-- Hotels will be dynamically loaded here -->
+        </div>
+    </section>
+
+    <!-- Special Deals Section -->
+    <section class="deals-section">
+        <h2>Special Hotel Deals</h2>
+        <div class="deals-grid">
+            <!-- Special deals will be dynamically loaded here -->
+        </div>
+    </section>
+
+    <!-- Popular Destinations -->
+    <section class="destinations-section">
+        <h2>Popular Destinations</h2>
+        <div class="destinations-grid">
+            <!-- Popular destinations will be dynamically loaded here -->
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>About Us</h3>
+                <p>TravelEase is your trusted partner in creating unforgettable travel experiences.</p>
+            </div>
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <a href="about.html">About</a>
+                <a href="flights.html">Flights</a>
+                <a href="hotels.html">Hotels</a>
+                <a href="tours.html">Tours</a>
+                <a href="contact.html">Contact</a>
+                <a href="ratings.html">Reviews</a>
+                <a href="privacy.html">Privacy Policy</a>
+                <a href="terms.html">Terms & Conditions</a>
+            </div>
+            <div class="footer-section">
+                <h3>Contact Info</h3>
+                <p>Email: info@travelease.com</p>
+                <p>Phone: +1 234 567 890</p>
+                <p>Address: 123 Travel Street, City, Country</p>
+            </div>
+            <div class="footer-section">
+                <h3>Follow Us</h3>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-facebook"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-linkedin"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 TravelEase. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+</body>
+</html> 
